@@ -1,0 +1,14 @@
+.git
+.venv
+venv
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+frontend/dist
+frontend/e2e/screenshots
+**/*.db
+**/*.db-wal
+**/*.db-shm
+backend/.env
+.env
+*.zip

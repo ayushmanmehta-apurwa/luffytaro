@@ -1,0 +1,181 @@
+{
+  "mode": "demo",
+  "generated_at": "2026-10-21T17:11:38.355114",
+  "split": "test",
+  "synthetic": true,
+  "note": "SYNTHETIC test data (generated reports, generated illustration scenes). DEMO MODE: these numbers measure simple keyword rules and image statistics, NOT NVIDIA model performance. The routing baseline uses the same keyword rule in demo mode, so routing numbers are expected to match; only a live run gives a meaningful routing comparison. Run with live credentials for model results. Do not read these as real-world performance.",
+  "routing": {
+    "accuracy": 0.9468085106382979,
+    "macro_f1": 0.8495833333333334,
+    "department_accuracy": 0.925531914893617,
+    "n": 94
+  },
+  "baseline_routing": {
+    "accuracy": 0.9468085106382979,
+    "macro_f1": 0.8495833333333334,
+    "department_accuracy": 0.9468085106382979,
+    "n": 94
+  },
+  "duplicates": {
+    "precision": 0.9714285714285714,
+    "recall": 0.6415094339622641,
+    "f1": 0.7727272727272727,
+    "gold_pairs": 53,
+    "predicted_pairs": 35
+  },
+  "closure": {
+    "false_accept_rate": 0.0,
+    "false_reject_rate": 0.25,
+    "closure_precision": 1.0,
+    "n_fake": 96,
+    "n_genuine": 24,
+    "verdicts": {
+      "verified": 18,
+      "contradicted": 72,
+      "needs_evidence": 30
+    },
+    "baseline": {
+      "false_accept_rate": 1.0,
+      "false_reject_rate": 0.0,
+      "closure_precision": 0.2,
+      "n_fake": 96,
+      "n_genuine": 24,
+      "verdicts": {
+        "verified": 120
+      }
+    }
+  },
+  "closure_by_evidence": {
+    "after_genuine": {
+      "verified": 18,
+      "needs_evidence": 6
+    },
+    "after_old": {
+      "contradicted": 24
+    },
+    "after_other_place": {
+      "contradicted": 24
+    },
+    "after_reused": {
+      "contradicted": 24
+    },
+    "after_screenshot": {
+      "needs_evidence": 24
+    }
+  },
+  "human_review": {
+    "human_rate": 0.11428571428571428,
+    "auto_rate": 0.8857142857142857
+  },
+  "coverage_curve": [
+    {
+      "coverage": 0.04,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.09,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.13,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.17,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.21,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.26,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.3,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.34,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.38,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.43,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.47,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.51,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.55,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.6,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.64,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.68,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.72,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.77,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.81,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.85,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.89,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.94,
+      "accuracy": 1.0
+    },
+    {
+      "coverage": 0.98,
+      "accuracy": 0.967
+    }
+  ],
+  "injection": {
+    "n": 6,
+    "changed": 0
+  },
+  "latency": {
+    "p50_s": 0.0,
+    "p95_s": 0.0,
+    "closure_p50_s": 0.09
+  },
+  "tokens": {
+    "total": 0,
+    "per_ticket": 0.0
+  },
+  "counts": {
+    "reports": 105,
+    "closure_cases": 120
+  }
+}

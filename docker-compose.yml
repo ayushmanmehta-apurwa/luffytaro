@@ -1,0 +1,27 @@
+# docker compose up --build        -> app on http://localhost:8000 (UI + API, Demo Mode unless .env has Nebius settings)
+# docker compose --profile job run --rm hotspot-job   -> run the hotspot job once against the app
+# NOTE: the Docker files were written but could not be run in the environment where this project was generated.
+services:
+  app:
+    build: .
+    ports: ["8000:8000"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: sqlite:////data/civicclosure.db
+      CORS_ORIGINS: http://localhost:8000
+    volumes:
+      - civic-data:/data
+  hotspot-job:
+    profiles: ["job"]
+    build: ./jobs/hotspots
+    depends_on: [app]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      API_BASE: http://app:8000
+      WORKSPACE: demo
+volumes:
+  civic-data:

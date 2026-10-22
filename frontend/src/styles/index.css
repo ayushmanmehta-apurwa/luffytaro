@@ -1,0 +1,36 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/hanken-grotesk';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { height: 100%; }
+body { @apply font-sans text-navy-900 bg-paper antialiased; }
+h1, h2, h3, .font-display { font-family: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.01em; }
+
+:focus-visible { outline: 3px solid #6C9BFF; outline-offset: 2px; border-radius: 6px; }
+
+/* Children of a grid may shrink below their content width, so one long line can never stretch a phone layout. */
+.grid > * { min-width: 0; }
+
+@layer components {
+  .card { @apply bg-white rounded-2xl shadow-lift border border-navy-900/5; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-electric text-white hover:bg-electric-deep; }
+  .btn-dark { @apply btn bg-navy-900 text-white hover:bg-navy-700; }
+  .btn-ghost { @apply btn bg-white text-navy-900 border border-navy-900/15 hover:bg-paper; }
+  .btn-danger { @apply btn bg-white text-verdict-bad border border-verdict-bad/30 hover:bg-verdict-badbg; }
+  .field { @apply w-full rounded-xl border border-navy-900/30 bg-white px-3.5 py-2.5 text-sm text-navy-900 placeholder:text-navy-900/55 focus:border-electric; }
+  .label { @apply block text-sm font-medium text-navy-900 mb-1.5; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin { animation: spin-slow 0.9s linear infinite; }
+@keyframes stamp { 0% { transform: scale(1.35) rotate(-6deg); opacity: 0; } 60% { transform: scale(0.96) rotate(-2deg); opacity: 1; } 100% { transform: scale(1) rotate(-2deg); opacity: 1; } }
+.stamp { animation: stamp .35s ease-out both; }

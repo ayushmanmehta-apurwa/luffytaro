@@ -1,0 +1,70 @@
+# CivicClosure domain configuration.
+# Everything the pipeline needs to know about one campus lives here.
+campus_name: Demo University Campus
+timezone: Asia/Kolkata
+
+# Confidence thresholds (tune these on a labelled dev set - see eval/run_eval.py)
+thresholds:
+  route_direct: 0.75        # intake confidence at/above which the issue maps straight to a department
+  route_human: 0.60         # routing confidence below this goes to a human reviewer
+  duplicate: 0.70           # live duplicate-judge confidence needed to merge
+  visual: 0.70              # visual-check confidence needed to count as sure
+  demo_duplicate_similarity: 0.18   # demo-mode text similarity needed to merge
+
+departments:
+  electrical:   {name: Electrical Maintenance, sla_hours: {high: 8,  medium: 48, low: 120}}
+  housekeeping: {name: Housekeeping,           sla_hours: {high: 12, medium: 24, low: 72}}
+  plumbing:     {name: Plumbing and Water,     sla_hours: {high: 6,  medium: 24, low: 72}}
+  civil:        {name: Civil and Estate,       sla_hours: {high: 24, medium: 72, low: 168}}
+  it:           {name: IT Services,            sla_hours: {high: 8,  medium: 24, low: 72}}
+
+# closure_check.question is asked of the "after" photo; expected is the answer that means "fixed".
+# Quote 'yes' / 'no': PyYAML turns bare yes/no into booleans.
+issue_types:
+  broken_light:
+    label: Broken light
+    department: electrical
+    closure_check: {question: 'Is the light fixture in this photo switched on and lit?', expected: 'yes'}
+  garbage_overflow:
+    label: Garbage overflow
+    department: housekeeping
+    closure_check: {question: 'Is the area free of overflowing or scattered garbage?', expected: 'yes'}
+  water_leak:
+    label: Water leakage
+    department: plumbing
+    closure_check: {question: 'Is there any visible water leaking or pooling?', expected: 'no'}
+  blocked_path:
+    label: Blocked pathway
+    department: civil
+    closure_check: {question: 'Is the walkway or staircase clear of obstructions?', expected: 'yes'}
+  wifi_down:
+    label: Wi-Fi problem
+    department: it
+    closure_check: null      # not visible in a photo: needs reporter confirmation or a human reviewer
+  broken_furniture:
+    label: Broken furniture
+    department: civil
+    closure_check: null
+  pest:
+    label: Pest problem
+    department: housekeeping
+    closure_check: null
+  other:
+    label: Other complaint
+    department: null         # always needs a human to choose the department
+    closure_check: null
+
+# Words that make a report urgent (deterministic double-check next to the model's own flag)
+urgent_keywords: [exposed wire, spark, sparking, short circuit, electric shock, fire, flood, flooding, stairs, staircase, unsafe, dangerous, emergency, structural crack, gas leak]
+
+locations:
+  - Hostel A
+  - Hostel B
+  - Central Library
+  - Block C
+  - Block D
+  - Mess Hall
+  - Sports Complex
+  - Admin Block
+  - Canteen
+  - Parking Area

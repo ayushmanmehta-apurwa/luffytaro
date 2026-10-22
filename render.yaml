@@ -1,0 +1,27 @@
+# Render "Blueprint": New + > Blueprint > pick this repository. It sets the things that are easy to get wrong by hand:
+# Docker runtime, repository root as the build context (NO Root Directory), the free plan and the health check.
+# NOTE: written from Render's documented format but not run by the author. Check the plan in the dashboard before you approve it.
+services:
+  - type: web
+    name: civicclosure
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NEBIUS_API_KEY
+        sync: false            # you type this in the dashboard; it is never stored in Git
+      - key: FAST_MODEL
+        sync: false
+      - key: REASON_MODEL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false            # your Vercel address, only if the frontend is hosted separately
+      - key: EXPORT_TOKEN
+        generateValue: true
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: DISABLE_DOCS
+        value: "true"
+      - key: DAILY_TOKEN_BUDGET
+        value: "300000"

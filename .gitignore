@@ -1,0 +1,23 @@
+# secrets and local config
+.env
+backend/.env
+*.pem
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+# databases created at run time
+*.db
+*.sqlite3
+eval/results/eval.db
+# node
+node_modules/
+frontend/dist/
+# editors and OS
+.vscode/
+.idea/
+.DS_Store
+frontend/e2e/screenshots/

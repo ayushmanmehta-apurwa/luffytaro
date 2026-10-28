@@ -9,7 +9,7 @@ RUN npm run build
 FROM python:3.12-slim
 WORKDIR /app
 COPY backend/requirements.txt backend/requirements.txt
-RUN pip install --no-cache-dir -r backend/requirements.txt psycopg2-binary
+RUN  pip install --no-cache-dir -r backend/requirements.txt "psycopg[binary]"
 COPY backend/ backend/
 COPY eval/ eval/
 COPY --from=web /web/dist frontend/dist
